@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript">
+			function getUrlVars() {
+				  var vars = {};
+				  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, 
+				  function(m,key,value) {
+					vars[key] = value;
+				  });
+				  return vars;
+				}
+		
+				var nombre = getUrlVars()["fname"];
+				var apellido= getUrlVars()["lname"];
+				var colorp = getUrlVars()["color"];
+				var tallap= getUrlVars()["talla"];
+				var ops=0;
+				var ad1=getUrlVars()["empaque"];
+				if(ad1!=undefined) ops+=4;
+				var ad2=getUrlVars()["nota"];
+				if(ad2!=undefined) ops+=2;
+				var ad3=getUrlVars()["prueba"];
+				if(ad3!=undefined) ops++;
+				alert("chk= " +ops+": "+ ad1+ " - " +ad2 + " - "+ad3);
+				//alert("fname= " + nombre +" "+apellido);
+		</script>         
+	</head>
+<body>
+
+<h2>Pedido Recibido</h2>
+
+<p>Recibe datos</p>
+
+<h3> Cliente</h3>
+<p id="Nombre">    </p>
+
+<h3>Pedido</h3>
+<p id="detalle">   </p>
+<div id="extras"> 
+
+</div>
+<script>
+	var pnom=document.getElementById("Nombre");
+	pnom.innerHTML="<i>"+nombre+" "+apellido+"</i>";
+	pnom.style="color:red;font-size:10px";
+	if(ops !=0)
+	{
+		const lista=document.createElement("ul");
+		if(ops==1 || ops==2 || ops==4){
+			const lin1=document.createElement("li");
+			lin1.innerHTML="Solo una opción";
+			lista.appendChild(lin1);
+		}
+		if(ops==7){
+			const lin1=document.createElement("li");
+			lin1.innerHTML="Solo una opción";
+			lista.appendChild(lin1);
+			const lin2=document.createElement("li");
+			lin2.innerHTML="Dos na opción";
+			lista.appendChild(lin2);
+			const lin3=document.createElement("li");
+			lin3.innerHTML="Opc 3";
+			lista.appendChild(lin3);
+		}
+	var secExtras=document.getElementById("extras");
+	secExtras.appendChild(lista);
+	}
+	
+</script>
+
+
+</body>
+</html>
